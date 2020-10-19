@@ -1,0 +1,22 @@
+{
+  "name": "create-express-skeleton",
+  "version": "1.0.0",
+  "description": "Script to initialize express-rest-skeleton",
+  "main": "index.js",
+  "bin": {
+    "create-express-api": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glanderson42/create-express-skeleton.git"
+  },
+  "author": "Vass Mark <vmark0818@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glanderson42/create-express-skeleton/issues"
+  },
+  "homepage": "https://github.com/glanderson42/create-express-skeleton#readme"
+}
