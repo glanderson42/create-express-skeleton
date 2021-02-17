@@ -2,6 +2,7 @@
 
 const { exec } = require('child_process');
 const os = require('os');
+const fs = require('fs');
 
 const name = process.argv[2];
 if(!name || name.match(/[<>:"\/\\|?*\x00-\x1F]/)) {
@@ -35,7 +36,7 @@ console.log(`Cloning ${url}`);
 runCommand(`git clone ${url} ${name}`)
   .then(() => {
     console.log(`Removing ${name}/.git`);
-    if(os.platform !== 'win32') {
+    if(os.platform() !== 'win32') {
       return runCommand(`rm -rf ${name}/.git`);
     }
     return runCommand(`rmdir /S /Q ${name}\\.git`);
@@ -45,9 +46,15 @@ runCommand(`git clone ${url} ${name}`)
   }).then(() => {
     return runCommand('echo "Done!"');
   }).then(() => {
+    const packageJson = require(`./${name}/package.json`);
     packageJson.repository = {};
     packageJson.bugs = {};
     packageJson.homepage = "";
+    packageJson.author = "";
+    packageJson.name = `${name}`;
+    packageJson.repository = {};
+    fs.writeFileSync(`./${name}/package.json`, JSON.stringify(packageJson, null, 4));
+  }).then(() => {
     console.log('           Installation done! ✔️     ');
     console.log('======================================');
     console.log('You can type the following npm scripts')
@@ -55,4 +62,5 @@ runCommand(`git clone ${url} ${name}`)
     console.log(`cd ${name} && npm start # to run in production`);
     console.log(`cd ${name} && npm test # to run tests`);
     console.log(`cd ${name} && npm lint # run eslint`);
+    process.exit(0);
   });
