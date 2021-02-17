@@ -4,7 +4,7 @@
   "description": "Script to initialize express-rest-skeleton",
   "main": "index.js",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org"
   },
   "bin": {
     "create-express-api": "index.js"
