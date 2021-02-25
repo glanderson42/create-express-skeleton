@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 const { exec } = require('child_process');
+const path = require('path')
 const os = require('os');
 const fs = require('fs');
 
@@ -46,14 +47,14 @@ runCommand(`git clone ${url} ${name}`)
   }).then(() => {
     return runCommand('echo "Done!"');
   }).then(() => {
-    const packageJson = require(`./${name}/package.json`);
+    const packageJson = require(path.resolve(`./${name}/package.json`));
     packageJson.repository = {};
     packageJson.bugs = {};
     packageJson.homepage = "";
     packageJson.author = "";
     packageJson.name = `${name}`;
     packageJson.repository = {};
-    fs.writeFileSync(`./${name}/package.json`, JSON.stringify(packageJson, null, 4));
+    fs.writeFileSync(path.resolve(`./${name}/package.json`), JSON.stringify(packageJson, null, 4));
   }).then(() => {
     console.log('           Installation done! ✔️     ');
     console.log('======================================');
