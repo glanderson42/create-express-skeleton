@@ -1,6 +1,6 @@
 {
   "name": "create-express-skeleton",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Script to initialize express-rest-skeleton",
   "main": "index.js",
   "publishConfig": {

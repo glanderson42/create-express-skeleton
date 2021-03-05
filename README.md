@@ -11,5 +11,5 @@ npm i -g create-express-skeleton
 ## Usage
 
 ```
-create-express-skeleton <name-of-your-app>
+npx create-express-skeleton <name-of-your-app>
 ```
